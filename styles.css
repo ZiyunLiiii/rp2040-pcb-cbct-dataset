@@ -227,7 +227,7 @@ h3 {
 }
 
 .facts div,
-.scan-card {
+.resource-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -265,11 +265,7 @@ dd {
 .resource-card {
   display: block;
   padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
   text-decoration: none;
-  box-shadow: 0 8px 26px rgba(20, 33, 61, 0.05);
 }
 
 .resource-card:hover {
@@ -277,13 +273,15 @@ dd {
 }
 
 .resource-card p {
-  margin: 8px 0 16px;
-  color: var(--muted);
+  margin: 7px 0 18px;
+  color: var(--accent-dark);
+  font-weight: 800;
 }
 
 .resource-card code {
-  color: var(--accent-dark);
-  font-size: 0.9rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
 }
 
 .figure-grid {
@@ -347,33 +345,12 @@ figcaption a {
   max-width: none;
 }
 
-.scan-card {
-  padding: 20px;
-}
-
-.scan-card p {
-  margin: 7px 0 18px;
-  color: var(--accent-dark);
-  font-weight: 800;
-}
-
 code,
 pre {
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-.scan-card code {
-  color: var(--muted);
-  font-size: 0.82rem;
-  overflow-wrap: anywhere;
-}
-
-.dataset-link {
-  text-decoration-color: var(--line);
-  text-underline-offset: 3px;
-}
-
-.dataset-link:hover code {
+.resource-card:hover code {
   color: var(--accent-dark);
 }
 
