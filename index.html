@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RP2040-PCB-CBCT dataset: a cone-beam CT benchmark for plastic-metal beam-hardening correction and metal artifact reduction.">
+  <title>RP2040-PCB-CBCT Dataset</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">RP2040-PCB-CBCT</a>
+    <nav aria-label="Primary navigation">
+      <a href="#overview">Overview</a>
+      <a href="#object">Object</a>
+      <a href="#geometry">Geometry</a>
+      <a href="#scans">Scan Sets</a>
+      <a href="#acquisition">Acquisition</a>
+      <a href="#preprocessing">Preprocessing</a>
+      <a href="#citation">Citation</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Public cone-beam CT benchmark</p>
+        <h1 id="hero-title">RP2040-PCB-CBCT Dataset</h1>
+        <p class="hero-text">
+          A newly constructed cone-beam CT dataset for plastic-metal beam-hardening correction,
+          scanned from an Adafruit RP2040 PCB enclosed in a plastic case using a North Star
+          Imaging 1420-DR system.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://www.datadepot.rcac.purdue.edu/bouman/elec_board">Download Dataset</a>
+          <a class="button secondary" href="#preprocessing">View Preprocessing</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" role="img" aria-label="Stylized cone-beam CT scan of a plastic case enclosing a PCB with metallic components.">
+        <div class="beam"></div>
+        <div class="detector">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="scan-object">
+          <div class="case-shell"></div>
+          <div class="pcb-board">
+            <span class="chip main-chip"></span>
+            <span class="chip small-chip chip-a"></span>
+            <span class="chip small-chip chip-b"></span>
+            <span class="metal port"></span>
+            <span class="metal pad pad-a"></span>
+            <span class="metal pad pad-b"></span>
+            <span class="trace trace-a"></span>
+            <span class="trace trace-b"></span>
+          </div>
+        </div>
+        <div class="artifact artifact-a"></div>
+        <div class="artifact artifact-b"></div>
+        <div class="artifact artifact-c"></div>
+      </div>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Overview</p>
+        <h2>Built for plastic-metal beam-hardening correction</h2>
+      </div>
+      <div class="overview-grid">
+        <p>
+          The scanned object combines low-density plastic with multiple dense metallic components,
+          producing severe streaking, shading, and material-dependent beam-hardening artifacts that
+          are representative of practical industrial inspection problems.
+        </p>
+        <dl class="facts">
+          <div>
+            <dt>Object</dt>
+            <dd>Adafruit RP2040 PCB in plastic case</dd>
+          </div>
+          <div>
+            <dt>System</dt>
+            <dd>North Star Imaging 1420-DR</dd>
+          </div>
+          <div>
+            <dt>Modality</dt>
+            <dd>Cone-beam CT</dd>
+          </div>
+          <div>
+            <dt>Use Case</dt>
+            <dd>Metal artifact reduction and beam-hardening correction</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="object" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Physical object</p>
+        <h2>Adafruit RP2040 board and snap-on enclosure</h2>
+      </div>
+      <div class="figure-grid">
+        <figure>
+          <img class="figure-image product-image" src="assets/adafruit-rp2040-board.jpg" alt="Adafruit Feather RP2040 with USB Type A Host board.">
+          <figcaption>
+            Adafruit Feather RP2040 with USB Type A Host.
+            Image source: <a href="https://www.adafruit.com/product/5723">Adafruit product 5723</a>.
+          </figcaption>
+        </figure>
+        <figure>
+          <img class="figure-image product-image" src="assets/adafruit-rp2040-case.jpg" alt="Snap-on enclosure for the Adafruit Feather RP2040 USB Host board.">
+          <figcaption>
+            Snap-on enclosure for Adafruit Feather RP2040 USB Host.
+            Image source: <a href="https://www.adafruit.com/product/6057">Adafruit product 6057</a>.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="geometry" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Object geometry</p>
+        <h2>Packaged RP2040 board and PCB layout</h2>
+      </div>
+      <div class="figure-grid">
+        <figure>
+          <img class="figure-image" src="assets/packaged-board-cad.png" alt="Exploded CAD view of the packaged RP2040 board with plastic case, PCB, and cover.">
+          <figcaption>Exploded CAD view of the packaged board.</figcaption>
+        </figure>
+        <figure>
+          <img class="figure-image" src="assets/pcb-dimensions.png" alt="RP2040 PCB geometry with top and side views and physical dimensions.">
+          <figcaption>PCB geometry and physical dimensions.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="scans" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Scan sets</p>
+        <h2>Six acquisitions across orientation and view count</h2>
+      </div>
+      <div class="scan-grid">
+        <article class="scan-card">
+          <h3>Horizontal</h3>
+          <p>600 views</p>
+          <code>Horizontal_Elec_Board_600.tgz</code>
+        </article>
+        <article class="scan-card">
+          <h3>Horizontal</h3>
+          <p>1200 views</p>
+          <code>Horizontal_Elec_Board_1200.tgz</code>
+        </article>
+        <article class="scan-card">
+          <h3>Horizontal</h3>
+          <p>1800 views</p>
+          <code>Horizontal_Elec_Board_1800.tgz</code>
+        </article>
+        <article class="scan-card">
+          <h3>Vertical</h3>
+          <p>600 views</p>
+          <code>Vertical_Elec_Board_600.tgz</code>
+        </article>
+        <article class="scan-card">
+          <h3>Vertical</h3>
+          <p>1200 views</p>
+          <code>Vertical_Elec_Board_1200.tgz</code>
+        </article>
+        <article class="scan-card">
+          <h3>Vertical</h3>
+          <p>1800 views</p>
+          <code>Vertical_Elec_Board_1800.tgz</code>
+        </article>
+      </div>
+      <p class="section-note">
+        The two orientations provide complementary measurement geometries and support robustness
+        evaluation under different metal-ray interaction patterns.
+      </p>
+    </section>
+
+    <section id="acquisition" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Acquisition</p>
+        <h2>Representative NSI project settings</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>Scan Type</th><td>Cone-beam CT</td></tr>
+            <tr><th>CT System</th><td>NSI 1420-DR</td></tr>
+            <tr><th>Voltage</th><td>190 kV</td></tr>
+            <tr><th>Current</th><td>200 microampere</td></tr>
+            <tr><th>X-ray Filter</th><td>1.2 mm Sn filter</td></tr>
+            <tr><th>Source-Object Distance</th><td>173.38 mm</td></tr>
+            <tr><th>Source-Detector Distance</th><td>400 mm</td></tr>
+            <tr><th>Magnification</th><td>2.37</td></tr>
+            <tr><th>Detector Pixel Pitch</th><td>0.127 x 0.127 mm</td></tr>
+            <tr><th>Detector Array Size</th><td>1536 x 1920</td></tr>
+            <tr><th>Views per Scan</th><td>600, 1200, or 1800</td></tr>
+            <tr><th>Rotation Range</th><td>360 degrees</td></tr>
+            <tr><th>Exposure Time</th><td>266.67 ms (3.75 fps)</td></tr>
+            <tr><th>Reconstruction Voxel Size</th><td>53.48 micrometers</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="preprocessing" class="section code-section">
+      <div class="section-heading">
+        <p class="eyebrow">Preprocessing</p>
+        <h2>Minimal MBIRJAX preprocessing example</h2>
+      </div>
+      <p class="section-note">
+        The example below keeps the dataset-specific preprocessing path from the experiment script:
+        download/extract an NSI scan, compute the sinogram and geometry parameters, crop the cone-beam
+        sinogram, initialize the model, generate transmission weights, and save FDK/MBIR outputs.
+      </p>
+      <pre><code>import os
+import numpy as np
+import jax.numpy as jnp
+import mbirjax as mj
+import mbirjax.preprocess as mjp
+
+os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
+os.environ["XLA_PYTHON_CLIENT_MEM_FRACTION"] = "0.98"
+
+dataset_url = "https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Horizontal_Elec_Board_1800.tgz"
+download_dir = "./demo_data"
+output_dir = "./outputs"
+os.makedirs(output_dir, exist_ok=True)
+
+dataset_dir = mj.download_and_extract(dataset_url, download_dir)
+
+sino, cone_beam_params, optional_params = mjp.nsi.compute_sino_and_params(
+    dataset_dir,
+    downsample_factor=[2, 2],
+    subsample_view_factor=2,
+)
+
+sino_cropped, cone_beam_params, optional_params = mjp.auto_crop_sino_conebeam(
+    sino,
+    cone_beam_params,
+    optional_params,
+)
+sino_cropped = np.maximum(sino_cropped, 0)
+
+ct_model = mj.ConeBeamModel(**cone_beam_params)
+ct_model.set_params(**optional_params)
+ct_model.set_params(sharpness=1.0, verbose=1, positivity_flag=True)
+
+weights = ct_model.gen_weights(sino_cropped, weight_type="transmission_root")
+
+fdk = ct_model.direct_recon(sino_cropped)
+jnp.save(os.path.join(output_dir, "recon_horiz_1800_fdk.npy"), fdk)
+
+mbir_recon, _ = ct_model.split_sino_recon(sino=sino_cropped, weights=weights)
+np.save(os.path.join(output_dir, "mbir_recon_horiz_1800.npy"), mbir_recon)
+
+mar_recon = mjp.recon_plastic_metal(
+    ct_model,
+    sino=sino_cropped,
+    weights=weights,
+    num_BH_iterations=3,
+    num_metal=1,
+    num_constraint_update_iter=0,
+    order=3,
+    verbose=1,
+    alpha=1,
+    beta=0.002,
+    gamma=0.1,
+)
+jnp.save(os.path.join(output_dir, "recon_horiz_1800_plastic_metal.npy"), mar_recon)</code></pre>
+    </section>
+
+    <section id="citation" class="section citation-section">
+      <div class="section-heading">
+        <p class="eyebrow">Citation</p>
+        <h2>How to cite</h2>
+      </div>
+      <p>
+        Please cite the RP2040-PCB-CBCT dataset and the Adafruit RP2040 board reference when using
+        this benchmark. Replace the placeholder BibTeX fields below with the final publication
+        metadata if needed.
+      </p>
+      <pre><code>@misc{rp2040_pcb_cbct_dataset,
+  title = {RP2040-PCB-CBCT Dataset},
+  howpublished = {\url{https://www.datadepot.rcac.purdue.edu/bouman/elec_board}},
+  note = {Cone-beam CT benchmark for plastic-metal beam-hardening correction}
+}</code></pre>
+      <div class="references">
+        <h3>Image and object references</h3>
+        <ul>
+          <li><a href="https://www.adafruit.com/product/5723">Adafruit Feather RP2040 with USB Type A Host, product 5723</a></li>
+          <li><a href="https://www.adafruit.com/product/6057">Snap-on Enclosure for Adafruit Feather RP2040 USB Host, product 6057</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>RP2040-PCB-CBCT Dataset</p>
+    <a href="https://www.datadepot.rcac.purdue.edu/bouman/elec_board">DataDepot download</a>
+  </footer>
+</body>
+</html>
