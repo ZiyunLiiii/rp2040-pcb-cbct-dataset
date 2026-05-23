@@ -89,9 +89,9 @@ nav a:hover {
 .eyebrow {
   margin: 0 0 12px;
   color: var(--accent-dark);
-  font-size: 0.78rem;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
@@ -189,8 +189,8 @@ h1 {
 h2 {
   max-width: 940px;
   margin: 0;
-  font-size: clamp(2.4rem, 4.6vw, 4rem);
-  line-height: 1.04;
+  font-size: clamp(1.65rem, 3vw, 2.55rem);
+  line-height: 1.12;
   letter-spacing: 0;
 }
 

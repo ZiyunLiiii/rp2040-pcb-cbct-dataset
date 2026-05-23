@@ -225,14 +225,14 @@
           cone-beam CT preprocessing, FDK reconstruction, MBIR reconstruction, and plastic-metal
           beam-hardening correction experiments. Installation instructions and package documentation
           are available in the
-          <a href="https://mbirjax.readthedocs.io/en/latest/">MBIRJAX install guide</a>.
+          <a href="https://mbirjax.readthedocs.io/en/latest/">MBIRJAX documentations</a>.
         </p>
       </div>
 
       <div class="subsection">
-        <h3>Minimal preprocessing example</h3>
+        <h3>Preprocessing example</h3>
         <p class="section-note">
-          The example below keeps the dataset-specific preprocessing path from the experiment script:
+          The script below demonstrates the NSI dataset preprocessing path with MBIRJAX:
           download/extract an NSI scan, compute the sinogram and geometry parameters, crop the cone-beam
           sinogram (optional), initialize the model, generate transmission weights, and run FDK/MBIR/IPMR reconstructions.
           The following example assumes that the dataset has already been downloaded and extracted locally.
