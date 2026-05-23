@@ -151,176 +151,23 @@ h1 {
 }
 
 .hero-visual {
-  position: relative;
-  min-height: 540px;
-  overflow: hidden;
+  margin: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background:
-    radial-gradient(circle at 60% 44%, rgba(0, 138, 129, 0.17), transparent 29%),
-    linear-gradient(135deg, #f9fbfd, #e8edf4);
+  background: #fff;
   box-shadow: var(--shadow);
 }
 
-.beam {
-  position: absolute;
-  inset: 10% 36% 10% -8%;
-  clip-path: polygon(0 50%, 100% 8%, 100% 92%);
-  background: linear-gradient(90deg, rgba(193, 115, 23, 0.03), rgba(193, 115, 23, 0.32));
-}
-
-.detector {
-  position: absolute;
-  top: 17%;
-  right: 8%;
-  width: 34px;
-  height: 66%;
-  display: grid;
-  gap: 7px;
-  padding: 7px;
-  border-radius: 5px;
-  background: #243047;
-}
-
-.detector span {
-  border-radius: 3px;
-  background: linear-gradient(180deg, #8be1d8, #4aa9a0);
-}
-
-.scan-object {
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  width: min(58%, 430px);
-  aspect-ratio: 1.25;
-  transform: translate(-50%, -50%) rotate(-8deg);
-}
-
-.case-shell {
-  position: absolute;
-  inset: 0;
-  border: 16px solid rgba(255, 255, 255, 0.74);
-  border-radius: 28px;
-  background: rgba(213, 220, 229, 0.42);
-  box-shadow: inset 0 0 32px rgba(20, 33, 61, 0.1);
-}
-
-.pcb-board {
-  position: absolute;
-  inset: 19% 12%;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #0f8c66, #0b604b);
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.18), 0 22px 40px rgba(20, 33, 61, 0.19);
-}
-
-.chip,
-.metal,
-.trace {
-  position: absolute;
+.hero-visual img {
   display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
 }
 
-.chip {
-  border-radius: 4px;
-  background: #1f2937;
-}
-
-.main-chip {
-  width: 28%;
-  height: 34%;
-  left: 34%;
-  top: 28%;
-}
-
-.small-chip {
-  width: 16%;
-  height: 13%;
-}
-
-.chip-a {
-  left: 12%;
-  top: 20%;
-}
-
-.chip-b {
-  right: 12%;
-  bottom: 18%;
-}
-
-.metal {
-  background: linear-gradient(135deg, #f0f3f7, #8894a3);
-}
-
-.port {
-  width: 20%;
-  height: 18%;
-  left: 39%;
-  bottom: -4%;
-  border-radius: 5px;
-}
-
-.pad {
-  width: 11%;
-  height: 18%;
-  border-radius: 3px;
-}
-
-.pad-a {
-  right: 12%;
-  top: 17%;
-}
-
-.pad-b {
-  left: 13%;
-  bottom: 18%;
-}
-
-.trace {
-  height: 2px;
-  background: rgba(222, 201, 102, 0.85);
-  transform-origin: left center;
-}
-
-.trace-a {
-  width: 42%;
-  top: 43%;
-  left: 11%;
-  transform: rotate(19deg);
-}
-
-.trace-b {
-  width: 36%;
-  right: 13%;
-  bottom: 33%;
-  transform: rotate(-16deg);
-}
-
-.artifact {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(193, 115, 23, 0.42), transparent);
-  transform-origin: center;
-}
-
-.artifact-a {
-  width: 88%;
-  left: 6%;
-  top: 36%;
-  transform: rotate(13deg);
-}
-
-.artifact-b {
-  width: 74%;
-  left: 10%;
-  top: 55%;
-  transform: rotate(-18deg);
-}
-
-.artifact-c {
-  width: 78%;
-  left: 14%;
-  top: 69%;
-  transform: rotate(7deg);
+.hero-visual figcaption {
+  margin: 0;
+  padding: 10px 12px;
 }
 
 .section {
@@ -557,10 +404,6 @@ th {
     min-height: auto;
   }
 
-  .hero-visual {
-    min-height: 420px;
-  }
-
   .scan-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -590,10 +433,6 @@ th {
 
   .button {
     width: 100%;
-  }
-
-  .hero-visual {
-    min-height: 320px;
   }
 
   .scan-grid,
