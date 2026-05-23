@@ -436,8 +436,7 @@ figcaption {
   font-weight: 700;
 }
 
-figcaption a,
-.references a {
+figcaption a {
   color: var(--accent-dark);
   font-weight: 800;
 }
@@ -518,25 +517,6 @@ th {
   background: var(--code);
   font-size: 0.88rem;
   line-height: 1.62;
-}
-
-.references {
-  max-width: 880px;
-  margin-top: 26px;
-}
-
-.references h3 {
-  margin-bottom: 10px;
-}
-
-.references ul {
-  margin: 0;
-  padding-left: 20px;
-  color: var(--muted);
-}
-
-.references li + li {
-  margin-top: 8px;
 }
 
 .site-footer {
