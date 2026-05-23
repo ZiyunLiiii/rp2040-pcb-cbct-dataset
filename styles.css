@@ -320,6 +320,11 @@ figcaption a {
   font-weight: 800;
 }
 
+.section-note a {
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
 .scan-card {
   padding: 20px;
 }
