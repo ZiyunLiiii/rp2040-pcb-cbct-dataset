@@ -145,32 +145,32 @@
         <article class="scan-card">
           <h3>Horizontal</h3>
           <p>600 views</p>
-          <code>Horizontal_Elec_Board_600.tgz</code>
+          <a class="dataset-link" href="https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Horizontal_Elec_Board_600.tgz"><code>Horizontal_Elec_Board_600.tgz</code></a>
         </article>
         <article class="scan-card">
           <h3>Horizontal</h3>
           <p>1200 views</p>
-          <code>Horizontal_Elec_Board_1200.tgz</code>
+          <a class="dataset-link" href="https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Horizontal_Elec_Board_1200.tgz"><code>Horizontal_Elec_Board_1200.tgz</code></a>
         </article>
         <article class="scan-card">
           <h3>Horizontal</h3>
           <p>1800 views</p>
-          <code>Horizontal_Elec_Board_1800.tgz</code>
+          <a class="dataset-link" href="https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Horizontal_Elec_Board_1800.tgz"><code>Horizontal_Elec_Board_1800.tgz</code></a>
         </article>
         <article class="scan-card">
           <h3>Vertical</h3>
           <p>600 views</p>
-          <code>Vertical_Elec_Board_600.tgz</code>
+          <a class="dataset-link" href="https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Vertical_Elec_Board_600.tgz"><code>Vertical_Elec_Board_600.tgz</code></a>
         </article>
         <article class="scan-card">
           <h3>Vertical</h3>
           <p>1200 views</p>
-          <code>Vertical_Elec_Board_1200.tgz</code>
+          <a class="dataset-link" href="https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Vertical_Elec_Board_1200.tgz"><code>Vertical_Elec_Board_1200.tgz</code></a>
         </article>
         <article class="scan-card">
           <h3>Vertical</h3>
           <p>1800 views</p>
-          <code>Vertical_Elec_Board_1800.tgz</code>
+          <a class="dataset-link" href="https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Vertical_Elec_Board_1800.tgz"><code>Vertical_Elec_Board_1800.tgz</code></a>
         </article>
       </div>
       <p class="section-note">
@@ -222,8 +222,6 @@ import jax.numpy as jnp
 import mbirjax as mj
 import mbirjax.preprocess as mjp
 
-os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
-os.environ["XLA_PYTHON_CLIENT_MEM_FRACTION"] = "0.98"
 
 dataset_url = "https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Horizontal_Elec_Board_1800.tgz"
 download_dir = "./demo_data"
