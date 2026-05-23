@@ -215,6 +215,8 @@ h3 {
   margin: 0;
   color: var(--muted);
   font-size: 1.05rem;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .facts {
@@ -339,6 +341,10 @@ figcaption a {
 
 .subsection .section-note {
   margin-top: 0;
+}
+
+.code-example {
+  max-width: none;
 }
 
 .scan-card {
