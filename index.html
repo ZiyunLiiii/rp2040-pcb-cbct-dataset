@@ -213,61 +213,127 @@
       <p class="section-note">
         The example below keeps the dataset-specific preprocessing path from the experiment script:
         download/extract an NSI scan, compute the sinogram and geometry parameters, crop the cone-beam
-        sinogram, initialize the model, generate transmission weights, and save FDK/MBIR outputs.
+        sinogram (optional), initialize the model, generate transmission weights, and run FDK/MBIR/IPMR reconstructions.
+        The following example assumes that the dataset has already been downloaded and extracted locally.
+        Set `dataset_dir` to the extracted NSI dataset directory before running the script.
       </p>
       <pre><code>import os
 import numpy as np
-import jax.numpy as jnp
 import mbirjax as mj
 import mbirjax.preprocess as mjp
 
 
-dataset_url = "https://www.datadepot.rcac.purdue.edu/bouman/elec_board/Horizontal_Elec_Board_1800.tgz"
-download_dir = "./demo_data"
-output_dir = "./outputs"
-os.makedirs(output_dir, exist_ok=True)
+# ============================================================
+# User-configurable settings
+# ============================================================
 
-dataset_dir = mj.download_and_extract(dataset_url, download_dir)
+# Path to the downloaded and extracted dataset directory.
+# This directory should contain the NSI scan files.
+dataset_dir = "./demo_data/Horizontal_Elec_Board_1800"
+
+# NSI preprocessing parameters
+downsample_factor = [2, 2]      # [detector_row_downsample, detector_channel_downsample]
+subsample_view_factor = 2       # Use every N-th projection view
+
+# Reconstruction parameters
+sharpness = 1.0
+positivity_flag = True
+verbose = 1
+
+# Weighting model for MBIR reconstruction
+weight_type = "transmission_root"
+
+# Plastic-metal beam-hardening correction parameters
+num_BH_iterations = 3
+num_metal = 2
+num_constraint_update_iter = 15
+polynomial_order = 3
+
+# Regularization / model parameters for plastic-metal correction
+alpha = 1.0
+beta = 0.002
+gamma = 0.1
+
+
+# ============================================================
+# Step 1: Load NSI data and compute the cone-beam geometry
+# ============================================================
 
 sino, cone_beam_params, optional_params = mjp.nsi.compute_sino_and_params(
     dataset_dir,
-    downsample_factor=[2, 2],
-    subsample_view_factor=2,
-)
+    downsample_factor=downsample_factor,
+    subsample_view_factor=subsample_view_factor)
 
-sino_cropped, cone_beam_params, optional_params = mjp.auto_crop_sino_conebeam(
+
+# ============================================================
+# Step 2: Automatically crop the sinogram (optional)
+# ============================================================
+
+sino, cone_beam_params, optional_params = mjp.auto_crop_sino_conebeam(
     sino,
     cone_beam_params,
-    optional_params,
-)
-sino_cropped = np.maximum(sino_cropped, 0)
+    optional_params)
+
+
+# Enforce nonnegative line-integral values after preprocessing.
+sino = np.maximum(sino, 0)
+
+
+# ============================================================
+# Step 3: Initialize the cone-beam CT model
+# ============================================================
 
 ct_model = mj.ConeBeamModel(**cone_beam_params)
+
+# Set additional geometry and reconstruction parameters.
 ct_model.set_params(**optional_params)
-ct_model.set_params(sharpness=1.0, verbose=1, positivity_flag=True)
+ct_model.set_params(
+    sharpness=sharpness,
+    verbose=verbose,
+    positivity_flag=positivity_flag)
 
-weights = ct_model.gen_weights(sino_cropped, weight_type="transmission_root")
 
-fdk = ct_model.direct_recon(sino_cropped)
-jnp.save(os.path.join(output_dir, "recon_horiz_1800_fdk.npy"), fdk)
+# ============================================================
+# Step 4: Generate statistical weights
+# ============================================================
 
-mbir_recon, _ = ct_model.split_sino_recon(sino=sino_cropped, weights=weights)
-np.save(os.path.join(output_dir, "mbir_recon_horiz_1800.npy"), mbir_recon)
+weights = ct_model.gen_weights(
+    sino,
+    weight_type=weight_type)
 
-mar_recon = mjp.recon_plastic_metal(
+
+# ============================================================
+# Step 5: Compute an FDK reconstruction
+# ============================================================
+
+fdk_recon = ct_model.direct_recon(sino)
+
+
+# ============================================================
+# Step 6: Compute an MBIR reconstruction
+# ============================================================
+
+mbir_recon, recon_params = ct_model.split_sino_recon(
+    sino=sino,
+    weights=weights)
+
+
+# ============================================================
+# Step 7: Compute a plastic-metal beam-hardening corrected reconstruction
+# ============================================================
+
+plastic_metal_recon = mjp.recon_plastic_metal(
     ct_model,
-    sino=sino_cropped,
+    sino=sino,
     weights=weights,
-    num_BH_iterations=3,
-    num_metal=1,
-    num_constraint_update_iter=0,
-    order=3,
-    verbose=1,
-    alpha=1,
-    beta=0.002,
-    gamma=0.1,
-)
-jnp.save(os.path.join(output_dir, "recon_horiz_1800_plastic_metal.npy"), mar_recon)</code></pre>
+    num_BH_iterations=num_BH_iterations,
+    num_metal=num_metal,
+    num_constraint_update_iter=num_constraint_update_iter,
+    order=polynomial_order,
+    verbose=verbose,
+    alpha=alpha,
+    beta=beta,
+    gamma=gamma)</code></pre>
     </section>
 
     <section id="citation" class="section citation-section">
