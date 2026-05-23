@@ -4,6 +4,10 @@ Cone-beam CT dataset of an Adafruit RP2040 PCB enclosed in a plastic case, desig
 
 This repository contains the GitHub Pages splash page for the dataset. Open `index.html` locally, or enable GitHub Pages from the repository root to publish the site.
 
+Website:
+
+https://ziyunliiii.github.io/rp2040-pcb-cbct-dataset/
+
 Dataset download:
 
 https://www.datadepot.rcac.purdue.edu/bouman/elec_board
