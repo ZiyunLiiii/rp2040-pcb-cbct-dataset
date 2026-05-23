@@ -20,7 +20,6 @@
       <a href="#scans">Scan Sets</a>
       <a href="#acquisition">Acquisition</a>
       <a href="#resources">Resources</a>
-      <a href="#mbirjax">MBIRJAX</a>
       <a href="#preprocessing">Preprocessing</a>
       <a href="#citation">Citation</a>
     </nav>
@@ -208,33 +207,38 @@
       </div>
     </section>
 
-    <section id="mbirjax" class="section">
-      <div class="section-heading">
-        <p class="eyebrow">MBIRJAX</p>
-        <h2>Reconstruction and preprocessing toolkit</h2>
-      </div>
-      <p class="section-note">
-        MBIRJAX is a JAX-based model-based iterative reconstruction package used here for NSI
-        cone-beam CT preprocessing, FDK reconstruction, MBIR reconstruction, and plastic-metal
-        beam-hardening correction experiments. Installation instructions and package documentation
-        are available in the
-        <a href="https://mbirjax.readthedocs.io/en/latest/">MBIRJAX install guide</a>.
-      </p>
-    </section>
-
     <section id="preprocessing" class="section code-section">
       <div class="section-heading">
         <p class="eyebrow">Preprocessing</p>
-        <h2>Minimal MBIRJAX preprocessing example</h2>
+        <h2>MBIRJAX preprocessing</h2>
       </div>
       <p class="section-note">
-        The example below keeps the dataset-specific preprocessing path from the experiment script:
-        download/extract an NSI scan, compute the sinogram and geometry parameters, crop the cone-beam
-        sinogram (optional), initialize the model, generate transmission weights, and run FDK/MBIR/IPMR reconstructions.
-        The following example assumes that the dataset has already been downloaded and extracted locally.
-        Set `dataset_dir` to the extracted NSI dataset directory before running the script.
+        We provide well-developed NSI preprocessing code through the MBIRJAX Python package, which
+        connects the released NSI scan data to cone-beam geometry parsing, sinogram preparation,
+        reconstruction, and plastic-metal beam-hardening correction workflows.
       </p>
-      <pre><code>import os
+
+      <div class="subsection">
+        <h3>MBIRJAX toolkit</h3>
+        <p class="section-note">
+          MBIRJAX is a JAX-based model-based iterative reconstruction package used here for NSI
+          cone-beam CT preprocessing, FDK reconstruction, MBIR reconstruction, and plastic-metal
+          beam-hardening correction experiments. Installation instructions and package documentation
+          are available in the
+          <a href="https://mbirjax.readthedocs.io/en/latest/">MBIRJAX install guide</a>.
+        </p>
+      </div>
+
+      <div class="subsection">
+        <h3>Minimal preprocessing example</h3>
+        <p class="section-note">
+          The example below keeps the dataset-specific preprocessing path from the experiment script:
+          download/extract an NSI scan, compute the sinogram and geometry parameters, crop the cone-beam
+          sinogram (optional), initialize the model, generate transmission weights, and run FDK/MBIR/IPMR reconstructions.
+          The following example assumes that the dataset has already been downloaded and extracted locally.
+          Set `dataset_dir` to the extracted NSI dataset directory before running the script.
+        </p>
+        <pre><code>import os
 import numpy as np
 import mbirjax as mj
 import mbirjax.preprocess as mjp
@@ -351,6 +355,7 @@ plastic_metal_recon = mjp.recon_plastic_metal(
     alpha=alpha,
     beta=beta,
     gamma=gamma)</code></pre>
+      </div>
     </section>
 
     <section id="citation" class="section citation-section">
